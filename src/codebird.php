@@ -287,7 +287,7 @@ class Codebird
       'friendships/outgoing',
       'friendships/show',
       'fundamentals/tweets',
-      'fundamentals/:tweet_id',
+      'fundamentals/tweets/:tweet_id',
       'geo/id/:place_id',
       'geo/reverse_geocode',
       'geo/search',
