@@ -72,6 +72,7 @@ class Codebird
       'production' => 'https://ads-api.twitter.com/4/',
       'sandbox'    => 'https://ads-api-sandbox.twitter.com/4/'
     ],
+    'fundamentals' => 'https://api.twitter.com/2/',
     'media'        => 'https://upload.twitter.com/1.1/',
     'publish'      => 'https://publish.twitter.com/',
     'oauth'        => 'https://api.twitter.com/',
@@ -285,6 +286,8 @@ class Codebird
       'friendships/no_retweets/ids',
       'friendships/outgoing',
       'friendships/show',
+      'fundamentals/tweets',
+      'fundamentals/:tweet_id',
       'geo/id/:place_id',
       'geo/reverse_geocode',
       'geo/search',
@@ -2056,6 +2059,8 @@ class Codebird
       $url = self::$_endpoints['ads']['sandbox'] . substr($method, 12);
     } elseif (substr($method_template, 0, 4) === 'ads/') {
       $url = self::$_endpoints['ads']['production'] . substr($method, 4);
+    } elseif (substr($method_template, 0, 13) === 'fundamentals/') {
+      $url = self::$_endpoints['fundamentals'] . substr($method, 13);
     }
     return $url;
   }
@@ -2697,7 +2702,7 @@ class Codebird
  * Catch errors when authtoken is expired
  */
 class CodebirdAuthException extends \Exception {
-	
+
 }
 
 
@@ -2705,14 +2710,14 @@ class CodebirdAuthException extends \Exception {
  * Catch error when credentials are not set correclty
  */
 class CodebirdCredentialsException extends \Exception {
-	
+
 }
 
 /**
  * Catch errors r elated to bad endpoi ts
  */
 class CodebirdEndpointException extends \Exception {
-	
+
 }
 
 /*
@@ -2720,6 +2725,6 @@ class CodebirdEndpointException extends \Exception {
  */
 
 class CodebirdMediaException extends \Exception {
-	
+
 }
 
